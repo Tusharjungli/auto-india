@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'media', // 👈 auto-detects from OS theme
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -11,8 +12,8 @@ module.exports = {
         sans: ['Inter', 'sans-serif']
       },
       colors: {
-        primary: "#111111",
-        accent: "#E50914", // optional red highlight
+        primary: '#e11d48',
+        dark: '#0f0f0f'
       },
     },
   },

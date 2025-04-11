@@ -19,8 +19,8 @@ export default function Logo() {
     <Image
       src={logoSrc}
       alt="Auto India Spare Part Logo"
-      width={120}
-      height={40}
+      width={90}
+      height={10}
       priority
     />
   );

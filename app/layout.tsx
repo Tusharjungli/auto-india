@@ -2,7 +2,9 @@
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar"; // ✅ import Navbar
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import FloatingFeedbackButton from "@/components/FloatingFeedbackButton"; // ✅ NEW
 
 export const metadata: Metadata = {
   title: "Auto India Spare Part",
@@ -18,8 +20,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="transition-colors duration-300 bg-white text-black dark:bg-black dark:text-white">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar /> {/* ✅ always show Navbar */}
+          <Navbar />
           <main>{children}</main>
+          <Footer />
+          <FloatingFeedbackButton /> {/* ✅ Floating Feedback button */}
         </ThemeProvider>
       </body>
     </html>

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'media', // 👈 auto-detects from OS theme
+  darkMode: 'class', // ✅ needed for next-themes
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -13,7 +13,10 @@ module.exports = {
       },
       colors: {
         primary: '#e11d48',
-        dark: '#0f0f0f'
+        dark: '#0f0f0f',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        muted: '#999999',
       },
     },
   },

@@ -3,18 +3,19 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Search,
+  MagnifyingGlass,
   Heart,
   ShoppingBag,
-  ChevronDown,
-  UserRound,
+  CaretDown,
+  User,
   MapPin,
-  Menu,
+  List,
   X,
-} from "lucide-react";
+} from "phosphor-react";
 import Logo from "./Logo";
 import Link from "next/link";
 import CartSidebar from "./CartSidebar";
+import WishlistDrawer from "./WishlistDrawer";
 
 const navLinks = [
   { label: "Brands", href: "/brands" },
@@ -32,12 +33,12 @@ const productDropdownItems = [
 export default function Navbar() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
+  const [isWishlistOpen, setWishlistOpen] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
       <header className="w-full px-6 py-4 flex items-center justify-between bg-background text-foreground shadow-sm sticky top-0 z-50">
-        {/* Logo + Desktop Nav */}
         <div className="flex items-center space-x-6 relative">
           <Link href="/">
             <Logo />
@@ -50,7 +51,7 @@ export default function Navbar() {
                 className="flex items-center hover:text-primary transition"
               >
                 Products
-                <ChevronDown size={16} className="ml-1" />
+                <CaretDown size={16} className="ml-1" />
               </button>
               <AnimatePresence>
                 {isDropdownOpen && (
@@ -82,10 +83,9 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Icons Right - Desktop Only */}
         <div className="hidden md:flex items-center space-x-4">
           <div className="flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-1 rounded-full">
-            <Search size={18} className="mr-2 text-gray-500 dark:text-gray-400" />
+            <MagnifyingGlass size={18} className="mr-2 text-gray-500 dark:text-gray-400" />
             <input
               type="text"
               placeholder="Search"
@@ -93,21 +93,23 @@ export default function Navbar() {
             />
           </div>
           <div title="Select Location"><MapPin className="cursor-pointer" /></div>
-          <div title="Login / Sign Up"><UserRound className="cursor-pointer" /></div>
-          <div title="Wishlist"><Heart className="cursor-pointer" /></div>
-          <div title="Cart"><ShoppingBag className="cursor-pointer" onClick={() => setCartOpen(true)} /></div>
+          <div title="Login / Sign Up"><User className="cursor-pointer" /></div>
+          <div title="Wishlist">
+            <Heart className="cursor-pointer" onClick={() => setWishlistOpen(true)} />
+          </div>
+          <div title="Cart">
+            <ShoppingBag className="cursor-pointer" onClick={() => setCartOpen(true)} />
+          </div>
         </div>
 
-        {/* Mobile Hamburger Button */}
         <button className="md:hidden" onClick={() => setMobileMenuOpen(true)}>
-          <Menu size={24} />
+          <List size={24} />
         </button>
       </header>
 
-      {/* Cart Sidebar */}
       <CartSidebar isOpen={isCartOpen} onClose={() => setCartOpen(false)} />
+      <WishlistDrawer isOpen={isWishlistOpen} onClose={() => setWishlistOpen(false)} />
 
-      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -139,7 +141,7 @@ export default function Navbar() {
                 <span>Set Location</span>
               </div>
               <div className="flex items-center space-x-2">
-                <UserRound size={18} />
+                <User size={18} />
                 <span>Sign In</span>
               </div>
               <div className="flex items-center space-x-2">

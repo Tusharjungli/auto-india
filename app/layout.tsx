@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingFeedbackButton from "@/components/FloatingFeedbackButton"; // ✅ NEW
+import FloatingFeedbackButton from "@/components/FloatingFeedbackButton";
 
 export const metadata: Metadata = {
   title: "Auto India Spare Part",
@@ -23,7 +23,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <FloatingFeedbackButton /> {/* ✅ Floating Feedback button */}
+          <FloatingFeedbackButton />
         </ThemeProvider>
       </body>
     </html>
